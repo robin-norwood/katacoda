@@ -1,4 +1,4 @@
-TF_VER = 0.12.26
+TF_VER=0.12.26
 
 #mkdir -p ~/src
 
