@@ -1,0 +1,32 @@
+{
+  "title": "Organize Terraform Code With Modules",
+  "description":
+    "Use, create, refactor, and publish Terraform modules.",
+  "time": "30 minutes",
+  "icon": "fa-terraform",
+  "details": {
+    "steps": [
+      {
+        "title": "Create Terraform configuration",
+        "text": "step1.md"
+      },
+    ],
+    "intro": {
+      "text": "intro.md",
+      "code": "courseBase.sh",
+      "credits": "https://learn.hashicorp.com/terraform"
+    },
+    "finish": {
+      "text": "finish.md",
+      "credits": "https://learn.hashicorp.com/terraform"
+    }
+  },
+  "environment": {
+    "uilayout": "terminal",
+    "uimessage1":
+      "\u001b[32mYour Interactive Bash Terminal. A safe place to learn and execute commands version 0.1.\u001b[m\r\n"
+  },
+  "backend": {
+    "imageid": "hashicorp-hashistack"
+  }
+}
