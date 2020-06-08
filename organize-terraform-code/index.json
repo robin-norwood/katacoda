@@ -24,7 +24,10 @@
   "environment": {
     "uilayout": "editor-terminal",
     "uimessage1":
-      "\u001b[32mYour Interactive Bash Terminal. A safe place to learn and execute commands version 0.1.\u001b[m\r\n"
+      "\u001b[32mYour Interactive Bash Terminal. A safe place to learn and execute commands version 0.1.\u001b[m\r\n",
+    "uiEditorPath": "/root/learn-terraform-modules",
+    "hideHiddenFiles": true,
+    "exclusionPatterns": ["./terraform/*"]
   },
   "backend": {
     "imageid": "ubuntu:1804"
