@@ -31,3 +31,24 @@ blocks, so comment or delete these lines from `prod.tf`:
 #}
 ```
 
+Your configuration hasn't changed, however, so applying it will show no
+changes.
+
+```
+terraform apply
+```{{execute}}
+
+Now your production and development environemnts are in separate files, but they
+are managed by the same Terraform workspace, and share both configuration and
+state. Because of this, a change that you intend to make in one environment can
+affect the other.
+
+Update the random_pet resource in `dev.tf`, changing value of the `length` argument to "5".
+
+```
+resource "random_pet" "petname" {
+  length    = 5
+  separator = "-"
+}
+```
+

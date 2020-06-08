@@ -154,5 +154,7 @@ Apply this configuration now:
 terraform apply
 ```{{execute}}
 
+Respond "yes" when prompted.
+
 In the next step, you will begin to organize this configuration by seperating
 your development and production configuration.
