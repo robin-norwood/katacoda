@@ -52,3 +52,20 @@ resource "random_pet" "petname" {
 }
 ```
 
+Now, apply these changes, and notice that all five of your resources are
+updated.
+
+```
+terraform apply
+```{{execute}}
+
+Respond with `yes` to apply the changes.
+
+Before moving on, destroy the resources you've created so far.
+
+```
+terraform destroy
+```{{execute}}
+
+In the next step, you will separate your dev and production environments so each
+can be managed independantly.
