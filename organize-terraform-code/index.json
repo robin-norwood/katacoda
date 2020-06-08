@@ -25,6 +25,14 @@
       "credits": "https://learn.hashicorp.com/terraform"
     }
   },
+  "assets": {
+    "client": [
+      {
+        "file": "assets/index.html",
+        "target": "~/learn-terraform/assets/"
+      }
+    ]
+  },
   "environment": {
     "uilayout": "editor-terminal",
     "uimessage1":
