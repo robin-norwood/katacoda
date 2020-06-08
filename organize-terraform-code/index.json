@@ -1,14 +1,18 @@
 {
   "title": "Organize Terraform Code With Modules",
   "description":
-    "Use, create, refactor, and publish Terraform modules.",
+    "Use, create, and publish Terraform modules.",
   "time": "30 minutes",
   "icon": "fa-terraform",
   "details": {
     "steps": [
       {
-        "title": "Create Terraform configuration",
+        "title": "Create Terraform configuration using modules",
         "text": "step1.md"
+      },
+      {
+        "title": "Create a Terraform module",
+        "text": "step2.md"
       }
     ],
     "intro": {
@@ -25,7 +29,7 @@
     "uilayout": "editor-terminal",
     "uimessage1":
       "\u001b[32mYour Interactive Bash Terminal. A safe place to learn and execute commands version 0.1.\u001b[m\r\n",
-    "uiEditorPath": "/root/learn-terraform-modules",
+    "uiEditorPath": "/root/learn-terraform",
     "hideHiddenFiles": true
   },
   "backend": {
