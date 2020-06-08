@@ -28,7 +28,7 @@
   "assets": {
     "client": [
       {
-        "file": "assets/index.html",
+        "file": "index.html",
         "target": "~/learn-terraform/assets/"
       }
     ]
