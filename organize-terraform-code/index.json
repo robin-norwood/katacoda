@@ -11,12 +11,20 @@
         "text": "step1.md"
       },
       {
-        "title": "Separate Configuration",
+        "title": "Separate Configuration Files",
         "text": "step2.md"
       },
       {
-        "title": "Separate State",
+        "title": "Separate Configuration Directories",
         "text": "step3.md"
+      },
+      {
+        "title": "Separate State With Workspaces",
+        "text": "step4.md"
+      },
+      {
+        "title": "Refactor With Modules",
+        "text": "step5.md"
       }
     ],
     "intro": {

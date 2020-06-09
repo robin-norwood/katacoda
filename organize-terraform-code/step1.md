@@ -111,13 +111,13 @@ resource "aws_s3_bucket_object" "prod" {
   content      = file("${path.module}/assets/index.html")
   content_type = "text/html"
 }
-```
+```{{copy}}
 
 This configuration simulated two s3 buckets set up for static website hosting:
 `dev`, and `prod`.
 
 You may have noticed two variables being used in the above configuration. Define
-these variabled by adding the following to `variables.tf`.
+these variabled by adding the following to `variables.tf`{{open}}.
 
 ```
 variable "aws_region" {
@@ -134,10 +134,10 @@ variable "prod_prefix" {
   description = "Prefix for buckets in the prod environment"
   default     = "prod"
 }
-```
+```{{copy}}
 
 You will also want the website endpoints for these two buckets. Add the
-following to `outputs.tf`:
+following to `outputs.tf`{{open}}:
 
 ```
 output "dev_website_endpoint" {
@@ -149,7 +149,7 @@ output "prod_website_endpoint" {
   description = "Website endpoint for the prod environment"
   value       = "http://${aws_s3_bucket.prod.website_endpoint}/index.html"
 }
-```
+```{{copy}}
 
 These three files make up the configuration for the environment you will work
 with for this session.
