@@ -2,7 +2,7 @@
 
 TF_VER=0.12.26
 
-apt-get --assume-yes install unzip
+# apt-get --assume-yes install unzip
 
 curl -O "https://releases.hashicorp.com/terraform/${TF_VER}/terraform_${TF_VER}_linux_amd64.zip"
 unzip "terraform_${TF_VER}_linux_amd64.zip" -d /usr/local/bin/
