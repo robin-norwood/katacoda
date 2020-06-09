@@ -30,18 +30,34 @@ blocks, so comment out or remove these lines from `prod.tf`{{open}}:
 ```
 
 Also remove the entire `resource "aws_s3_bucket" "dev" { ... }` and `resource
-"aws_s3_bucket_object" "dev" { ... }` blocks from `prod.tf`{{open}}.
+"aws_s3_bucket_object" "dev" { ... }` blocks from `prod.tf`{{open}}. Once this
+is done, you should have two resource blocks in `prod.tf`: One for the bucket,
+and one for the bucket object.
 
 Open `dev.tf`{{open}}, and remove the `resource "aws_s3_bucket" "prod" { ... }`
-and `resource "aws_s3_bucket_object" "dev" { ... }` blocks as well. Be sure to leave the
-provider and random_pet blocks in this file.
+and `resource "aws_s3_bucket_object" "prod" { ... }` blocks as well. Be sure to
+leave the aws provider and random_pet resource blocks in this file.
 
-Your configuration hasn't changed, however, so applying it will show no
-changes.
+Since Terraform loads all `.tf` files in the current directory when it runs,
+your configuration hasn't changed, so applying it will show no changes.
 
 ```
 terraform apply
 ```{{execute}}
+
+Ensure that you get no errors running this apply command before you continue.
+You should see output like this:
+
+```
+# ...
+
+Apply complete! Resources: 0 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+dev_website_endpoint = http://hc-digital-dev-infinitely-vertically-busy-tapir.s3-website-us-west-2.amazonaws.com/index.html
+prod_website_endpoint = http://hc-digital-prod-infinitely-vertically-busy-tapir.s3-website-us-west-2.amazonaws.com/index.html
+```
 
 Now your production and development environemnts are in separate files, but they
 are managed by the same Terraform workspace, and share both configuration and
@@ -58,8 +74,8 @@ resource "random_pet" "petname" {
 }
 ```{{copy}}
 
-Now, apply these changes, and notice that all five of your resources are
-updated.
+Now, apply these changes, and notice that all five of your resources will be
+destroyed and recreated.
 
 ```
 terraform apply
@@ -76,5 +92,5 @@ terraform destroy
 Respond with `yes`{{execute}} when prompted.
 
 In the next step, you will separate your dev and production environments into
-different workspaces, so each can be deployed and managed separately.
+different workspaces, so each can be managed separately.
 

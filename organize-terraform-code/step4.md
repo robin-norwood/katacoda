@@ -72,4 +72,5 @@ Now your configuration is independant, and each environment is managed
 separately. However, the configuration is entirely duplicated between
 environments.
 
-In the next step, you will refactor the bucket resource into a module.
+In the next step, you will refactor the bucket resource into a module that you
+will use in both sets of configuration.

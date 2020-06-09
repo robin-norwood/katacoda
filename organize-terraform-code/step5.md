@@ -110,7 +110,8 @@ module "website_s3_bucket" {
 }
 ```{{copy}}
 
-And update the bucket object resource to use the module.
+And replace the bucket object resource block in the same file with the following
+to reference bucket created by the module.
 
 ```
 resource "aws_s3_bucket_object" "webapp" {

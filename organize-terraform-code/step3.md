@@ -5,6 +5,10 @@ doesn't help prevent accidental changes to parts of your infrastructure.
 In this step, you will learn to use Terraform workspaces to manage two separate
 environments with the same set of configuration.
 
+**Note**: Before following on, you will need to close the editor window for
+`main.tf` to ensure the contents of the editor window don't overwrite this file
+as you refactor your configuration.
+
 Remove the `prod.tf` file you created in the last step, and rename `dev.tf` back
 to `main.tf`:
 
@@ -42,7 +46,7 @@ output "website_endpoint" {
 
 Now, update `main.tf`{{open}} to reflect these changes.
 
-First, update the resource name and bucket argument:
+First, update the bucket resource name and bucket name argument:
 
 ```
 - resource "aws_s3_bucket" "dev" {
