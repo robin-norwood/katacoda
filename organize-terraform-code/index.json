@@ -35,15 +35,16 @@
     "finish": {
       "text": "finish.md",
       "credits": "https://learn.hashicorp.com/terraform"
-    }
-  },
-  "assets": {
-    "host01": [
-      {
-        "file": "index.html",
-        "target": "~/"
-      }
-    ]
+    },
+    "assets": {
+      "host01": [
+        {
+          "file": "index.html",
+          "target": "~/"
+        }
+      ]
+    },
+  
   },
   "environment": {
     "uilayout": "editor-terminal",
