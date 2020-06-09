@@ -1,3 +1,9 @@
+Now that you have a monolithic configuration to work with, in this step you will
+seperate the configuration into two files, one for your "dev" environment, and
+one for "prod".
+
+## Seperate Configuration Files
+
 In this step, you will separate your production and development environments
 into two configuration files.
 
@@ -29,14 +35,24 @@ blocks, so comment out or remove these lines from `prod.tf`{{open}}:
 # }
 ```
 
-Also remove the entire `resource "aws_s3_bucket" "dev" { ... }` and `resource
-"aws_s3_bucket_object" "dev" { ... }` blocks from `prod.tf`{{open}}. Once this
-is done, you should have two resource blocks in `prod.tf`: One for the bucket,
-and one for the bucket object.
+Also remove the resource blocks for your dev environment from `prod.tf{{open}}:
 
-Open `dev.tf`{{open}}, and remove the `resource "aws_s3_bucket" "prod" { ... }`
-and `resource "aws_s3_bucket_object" "prod" { ... }` blocks as well. Be sure to
-leave the aws provider and random_pet resource blocks in this file.
+- Remove the entire `resource "aws_s3_bucket" "dev" { ... }` block
+- Remove the entire `resource "aws_s3_bucket_object" "dev" { ... }` block
+
+Once this is done, you will have two resource blocks in `prod.tf`: One for the
+bucket, and one for the bucket object.
+
+Now do the equivalent for `dev.tf`{{open}}:
+
+- Remove the entire `resource "aws_s3_bucket" "prod" { ... }` block
+- Remove the entire `resource "aws_s3_bucket_object" "prod" { ... }` block
+
+Be sure to leave the aws provider and random_pet resource blocks in this file.
+You will now have two resource blocks in `dev.tf`: One for the bucket, and one for
+the bucket object.
+
+## Apply Configuration
 
 Since Terraform loads all `.tf` files in the current directory when it runs,
 your configuration hasn't changed, so applying it will show no changes.
@@ -49,7 +65,7 @@ Ensure that you get no errors running this apply command before you continue.
 You should see output like this:
 
 ```
-# ...
+# Output truncated...
 
 Apply complete! Resources: 0 added, 0 changed, 0 destroyed.
 
@@ -63,6 +79,8 @@ Now your production and development environemnts are in separate files, but they
 are managed by the same Terraform workspace, and share both configuration and
 state. Because of this, a change that you intend to make in one environment can
 affect the other.
+
+## Make a Configuration Change
 
 Update the random_pet resource in `dev.tf`{{open}}, changing value of the `length`
 argument to "5".
@@ -83,6 +101,8 @@ terraform apply
 
 Respond with `yes`{{execute}} to apply the changes.
 
+## Destroy Resources
+
 Before moving on, destroy the resources you've created so far.
 
 ```
@@ -93,4 +113,3 @@ Respond with `yes`{{execute}} when prompted.
 
 In the next step, you will separate your dev and production environments into
 different workspaces, so each can be managed separately.
-

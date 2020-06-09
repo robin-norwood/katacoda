@@ -5,9 +5,14 @@ doesn't help prevent accidental changes to parts of your infrastructure.
 In this step, you will learn to use Terraform workspaces to manage two separate
 environments with the same set of configuration.
 
-**Note**: Before following on, you will need to close the editor window for
-`main.tf` to ensure the contents of the editor window don't overwrite this file
-as you refactor your configuration.
+**Note**: Before continuing with the next step, you will need to close the
+editor window for `main.tf` to ensure the contents of the editor window don't
+overwrite this file as you refactor your configuration.
+
+## Consolidate Configuration
+
+Since the configuration is almost identical in `dev.tf` and `prod.tf`, it can be
+consolidated into one file managed by two workspaces.
 
 Remove the `prod.tf` file you created in the last step, and rename `dev.tf` back
 to `main.tf`:
@@ -82,6 +87,8 @@ for the bucket resource:
 }
 ```
 
+## Create Variable Definition Files
+
 Each environment will use a different set of variable definitions.
 
 Create a new file called `dev.tfvars`{{open}} to store variable definitions for your
@@ -98,6 +105,8 @@ Create another file called `prod.tfvars`{{open}}:
 aws_region = "us-west-2"
 prefix = "prod"
 ```{{copy}}
+
+## Apply Changes In Two Workspaces
 
 Now that your configuration is refactored to support either a dev or prod
 environment, initialize your workspace again to ensure your Terraform
@@ -136,11 +145,13 @@ terraform apply -var-file=prod.tfvars
 Again, respond to the prompt with `yes`{{execute}}, and check the new production website
 endpoint.
 
-Now your environments can be managed independantly. This works well when the
+Now your environments can be managed independently. This works well when the
 configuration is identical betwen environments (aside from variable
 definitions), but can be inflexible if you need different configuration between
 environments, or need to manage the resources seperately. You also need to
 ensure that all commands are run in the correct workspace.
+
+## Destroy Resources
 
 Before moving on, destroy the resources you've created so far.
 

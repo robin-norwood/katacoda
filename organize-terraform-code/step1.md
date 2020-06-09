@@ -1,3 +1,8 @@
+In this step, you will create a monolithic configuration to use with the rest of
+the scenario.
+
+## Configure AWS Provider
+
 First, configure an AWS provider.
 
 Open `main.tf`{{open}}. Begin your configuration with the AWS provider block below.
@@ -15,6 +20,8 @@ with the ones provided to you for this session.
 
 **Warning**: Hard-coding credentials into your Terraform configuration is not
 recommended outside of this lab environment.
+
+## Create Monolithic Configuration
 
 Now that your AWS provider is configured, copy and paste the following example configuration
 into `main.tf`.
@@ -145,6 +152,8 @@ output "prod_website_endpoint" {
 
 These three files make up the configuration for the environment you will work
 with for this session.
+
+## Apply Configuration
 
 Initialize your Terraform workspace:
 

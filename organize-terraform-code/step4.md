@@ -7,11 +7,15 @@ Ensure that you are still working in the `learn-terraform` directory before movi
 cd ~/learn-terraform
 ```{{execute}}
 
+## Create Directories
+
 Create directories for your environments:
 
 ```
 mkdir prod && mkdir dev
 ```{{execute}}
+
+## Copy Configuration
 
 Copy your configuration into the dev directory.
 
@@ -30,8 +34,10 @@ mv prod.tfvars prod/
 mv assets prod/
 ```{{execute}}
 
+## Initialize and Apply Configuration
+
 Now, your configuration is located in two separate directories, and can be managed
-independantly. Initialize and apply each one:
+independently. Initialize and apply each one:
 
 ```
 cd dev
@@ -53,6 +59,8 @@ terraform apply -var-file=prod.tfvars
 
 Again, respond to the confirmation prompt with `yes`{{execute}}.
 
+## Destroy Resources
+
 After verifying that the infrastructure works as expected, you can destroy it.
 
 ```
@@ -68,7 +76,7 @@ terraform destroy -var-file=dev.tfvars
 
 Once more, respond to the prompt with `yes`{{execute}}.
 
-Now your configuration is independant, and each environment is managed
+Now your configuration is independent, and each environment is managed
 separately. However, the configuration is entirely duplicated between
 environments.
 

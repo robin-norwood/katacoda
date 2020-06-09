@@ -7,6 +7,8 @@ Ensure that you are still working in the `learn-terraform` directory before movi
 cd ~/learn-terraform
 ```{{execute}}
 
+## Create Module Template
+
 Now create a directory with empty files to define your module.
 
 ```
@@ -27,6 +29,8 @@ Add the following to `modules/aws-s3-static-website-bucket/README.md`{{open}}:
 
 This module provisions AWS S3 buckets configured for static website hosting.
 ```{{copy}}
+
+## Create Module Configuration
 
 Add the following configuration to `modules/aws-s3-static-website-bucket/main.tf`{{open}}:
 
@@ -97,6 +101,8 @@ output "website_endpoint" {
 }
 ```{{copy}}
 
+## Refactor Configuration
+
 Now refactor your `prod` and `dev` configuration to use this module.
 
 Update `dev/main.tf`{{open}} to remove the entire `resource "aws_s3_bucket"
@@ -111,7 +117,7 @@ module "website_s3_bucket" {
 ```{{copy}}
 
 And replace the bucket object resource block in the same file with the following
-to reference bucket created by the module.
+to reference the bucket created by the module.
 
 ```
 resource "aws_s3_bucket_object" "webapp" {
@@ -133,6 +139,8 @@ output "website_endpoint" {
 }
 ```{{copy}}
 
+## Initialize and Apply
+
 Change into the dev directory and re-initialize it.
 
 ```
@@ -153,7 +161,15 @@ terraform apply -var-file=dev.tfvars
 Respond `yes`{{execute}} to the prompt, and once again visit the website
 endpoint in your web browser to verify the website was deployed correctly.
 
+## Practice
+
+Now do the same with your prod environment.
+
 The steps to update and apply your production configuration are nearly identical
 to the ones for your dev environment. Be sure to apply your configuration with
 the `-var-file=prod.tfvars` flag.
 
+## Destroy Resources
+
+Clean up both environments by running `terraform destroy` in both directories.
+Don't forget to include the `-var-file` argument!
