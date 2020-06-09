@@ -19,25 +19,25 @@ The original configuration included references to the environment - dev or prod
 - in several places. To make the configuration more generic, you will need to
 remove and replace these references.
 
-Replace the contents of `variables.tf` with:
+Replace the contents of `variables.tf`{{open}} with:
 
 ```
 variable "prefix" {
   description = "Prefix for buckets in this environment."
   default     = "dev"
 }
-```
+```{{copy}}
 
-Also replace `outputs.tf` with:
+Also replace `outputs.tf`{{open}} with:
 
 ```
 output "website_endpoint" {
   description = "Website endpoint for this environment"
   value       = "http://${aws_s3_bucket.web.website_endpoint}/index.html"
 }
-```
+```{{copy}}
 
-Now, update `main.tf` to reflect these changes.
+Now, update `main.tf`{{open}} to reflect these changes.
 
 First, update the resource name and bucket argument:
 
@@ -72,7 +72,7 @@ And finally update the object resource:
 }
 ```
 
-Create a new file called `dev.tfvars` to store variable definitions for your
+Create a new file called `dev.tfvars`{{open}} to store variable definitions for your
 development environment:
 
 ```
@@ -80,7 +80,7 @@ region = "us-west-2"
 prefix = "dev"
 ```
 
-Create another file called `prod.tfvars`:
+Create another file called `prod.tfvars`{{open}}:
 
 ```
 region = "us-west-2"
@@ -144,6 +144,4 @@ terraform destroy -var-file=dev.tfvars
 ```{{execute}}
 
 In the next step, you will manage your configuration in seperate directories.
-
-
 

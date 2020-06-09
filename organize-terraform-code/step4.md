@@ -30,7 +30,7 @@ Now move the configuration into the `prod` directory.
 mv main.tf outputs.tf variables.tf prod/
 mv prod.tfvars prod/
 mv assets prod/
-```
+```{{execute}}
 
 Now, your configuration is located in two separate directories, and can be managed
 independantly. Initialize and apply each one:
@@ -66,7 +66,7 @@ Respond to the prompt with "yes".
 ```
 cd ../dev
 terraform destroy -var-file=dev.tfvars
-```
+```{{execute}}
 
 Once more, respond to the prompt with "yes".
 
@@ -76,4 +76,3 @@ environments.
 
 In the next step, you will refactor duplicate parts of your infrastructure into
 a module.
-

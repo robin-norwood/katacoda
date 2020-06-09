@@ -21,15 +21,15 @@ The file `README.md` isn't used by Terraform, but can be used to document your
 module if you host it in a public or private Terraform Registry, or in a version
 control system such as GitHub.
 
-Add the following to `modules/aws-s3-static-website-bucket/README.md`:
+Add the following to `modules/aws-s3-static-website-bucket/README.md`{{open}}:
 
 ```
 # AWS S3 static website bucket
 
 This module provisions AWS S3 buckets configured for static website hosting.
-```
+```{{copy}}
 
-Add configuration to `modules/aws-s3-static-website-bucket/main.tf`:
+Add configuration to `modules/aws-s3-static-website-bucket/main.tf`{{open}}:
 
 ```
 resource "aws_s3_bucket" "s3_bucket" {
@@ -63,7 +63,7 @@ EOF
 
   force_destroy = true
 }
-```
+```{{copy}}
 
 Notice that you did not configure a provider for this module. Modules inherit
 the provider configuration from the Terraform configuration that uses them be
@@ -71,16 +71,16 @@ default.
 
 Like any Terraform configuration, modules can have variables and outputs.
 
-Add the following to `modules/aws-s3-static-website-bucket/variables.tf`:
+Add the following to `modules/aws-s3-static-website-bucket/variables.tf`{{open}}:
 
 ```
 variable "bucket_name" {
   description = "Name of the s3 bucket. Must be unique."
   type        = string
 }
-```
+```{{copy}}
 
-And add the following to `modules/aws-s3-static-website-bucket/outputs.tf`:
+And add the following to `modules/aws-s3-static-website-bucket/outputs.tf`{{open}}:
 
 ```
 output "arn" {
@@ -97,11 +97,11 @@ output "website_endpoint" {
   description = "Domain name of the bucket"
   value       = aws_s3_bucket.s3_bucket.website_endpoint
 }
-```
+```{{copy}}
 
 Now refactor your `prod` and `dev` configuration to use this module.
 
-Update `dev/main.tf` to remove the entire `resource "aws_s3_bucket_object"
+Update `dev/main.tf`{{open}} to remove the entire `resource "aws_s3_bucket_object"
 "webapp"` block, and replace it with the following:
 
 ```
@@ -110,7 +110,7 @@ module "website_s3_bucket" {
 
   bucket_name = "${var.prefix}-${random_pet.petname.id}"
 }
-```
+```{{copy}}
 
 And update the bucket object resource to use the new 
 
@@ -121,8 +121,9 @@ resource "aws_s3_bucket_object" "webapp" {
   content      = file("${path.module}/assets/index.html")
   content_type = "text/html"
 }
+```{{copy}}
 
-You will also need to update `dev/outputs.tf` to refer to the module instead of
+You will also need to update `dev/outputs.tf`{{open}} to refer to the module instead of
 the resource name:
 
 ```
@@ -130,7 +131,7 @@ output "website_endpoint" {
   description = "Website endpoint for this environment"
   value       = "http://${website_s3_bucket.website_endpoint}/index.html"
 }
-```
+```{{copy}}
 
 Change into the dev directory and re-initialize it.
 

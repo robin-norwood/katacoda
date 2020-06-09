@@ -16,7 +16,7 @@ mv main.tf prod.tf
 ```{{execute}}
 
 Your configuration only needs one instance of the provider and random_pet
-blocks, so comment out or delete these lines from `prod.tf`:
+blocks, so comment out or remove these lines from `prod.tf`{{open}}:
 
 ```
 # provider "aws" {
@@ -43,14 +43,15 @@ are managed by the same Terraform workspace, and share both configuration and
 state. Because of this, a change that you intend to make in one environment can
 affect the other.
 
-Update the random_pet resource in `dev.tf`, changing value of the `length` argument to "5".
+Update the random_pet resource in `dev.tf`{{open}}, changing value of the `length`
+argument to "5".
 
 ```
 resource "random_pet" "petname" {
   length    = 5
   separator = "-"
 }
-```
+```{{copy}}
 
 Now, apply these changes, and notice that all five of your resources are
 updated.
