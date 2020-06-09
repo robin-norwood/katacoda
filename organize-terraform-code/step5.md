@@ -1,5 +1,3 @@
-# Modularize Terraform Configuration
-
 In this step, you will refactor the configuration from the last step to use a
 module to define buckets used to host static websites.
 
@@ -15,6 +13,7 @@ Now create a directory with empty files to define your module.
 mkdir -p modules/aws-s3-static-website-bucket
 cd modules/aws-s3-static-website-bucket
 touch {README.md,main.tf,variables.tf,outputs.tf}
+cd -
 ```{{execute}}
 
 The file `README.md` isn't used by Terraform, but can be used to document your
@@ -29,7 +28,7 @@ Add the following to `modules/aws-s3-static-website-bucket/README.md`{{open}}:
 This module provisions AWS S3 buckets configured for static website hosting.
 ```{{copy}}
 
-Add configuration to `modules/aws-s3-static-website-bucket/main.tf`{{open}}:
+Add the following configuration to `modules/aws-s3-static-website-bucket/main.tf`{{open}}:
 
 ```
 resource "aws_s3_bucket" "s3_bucket" {
@@ -66,8 +65,7 @@ EOF
 ```{{copy}}
 
 Notice that you did not configure a provider for this module. Modules inherit
-the provider configuration from the Terraform configuration that uses them be
-default.
+the provider configuration from the Terraform configuration that uses them.
 
 Like any Terraform configuration, modules can have variables and outputs.
 
@@ -101,8 +99,8 @@ output "website_endpoint" {
 
 Now refactor your `prod` and `dev` configuration to use this module.
 
-Update `dev/main.tf`{{open}} to remove the entire `resource "aws_s3_bucket_object"
-"webapp"` block, and replace it with the following:
+Update `dev/main.tf`{{open}} to remove the entire `resource "aws_s3_bucket"
+"web" { ... }` block, and replace it with the following:
 
 ```
 module "website_s3_bucket" {
@@ -112,12 +110,13 @@ module "website_s3_bucket" {
 }
 ```{{copy}}
 
-And update the bucket object resource to use the new 
+And update the bucket object resource to use the module.
 
+```
 resource "aws_s3_bucket_object" "webapp" {
   acl          = "public-read"
   key          = "index.html"
-  bucket       = website_s3_bucket.name
+  bucket       = module.website_s3_bucket.name
   content      = file("${path.module}/assets/index.html")
   content_type = "text/html"
 }
@@ -129,7 +128,7 @@ the resource name:
 ```
 output "website_endpoint" {
   description = "Website endpoint for this environment"
-  value       = "http://${website_s3_bucket.website_endpoint}/index.html"
+  value       = "http://${module.website_s3_bucket.website_endpoint}/index.html"
 }
 ```{{copy}}
 

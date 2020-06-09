@@ -1,5 +1,3 @@
-# Create Terraform Configuration
-
 First, configure an AWS provider.
 
 Open `main.tf`{{open}}. Begin your configuration with the AWS provider block below.
@@ -18,13 +16,7 @@ with the ones provided to you for this session.
 **Warning**: Hard-coding credentials into your Terraform configuration is not
 recommended outside of this lab environment.
 
-Initialize your workspace with the AWS provider.
-
-```
-terraform init
-```{{execute}}
-
-Now that your workspace is configured, copy and paste the following example configuration
+Now that your AWS provider is configured, copy and paste the following example configuration
 into `main.tf`.
 
 ```
@@ -113,16 +105,16 @@ resource "aws_s3_bucket_object" "prod" {
 }
 ```{{copy}}
 
-This configuration simulated two s3 buckets set up for static website hosting:
+This configuration includes two s3 buckets set up for static website hosting:
 `dev`, and `prod`.
 
-You may have noticed two variables being used in the above configuration. Define
+You may have noticed three variables being used in the above configuration. Define
 these variabled by adding the following to `variables.tf`{{open}}.
 
 ```
 variable "aws_region" {
   description = "AWS region for all resources"
-  default     = dev
+  default     = "us-west-2"
 }
 
 variable "dev_prefix" {
@@ -136,7 +128,7 @@ variable "prod_prefix" {
 }
 ```{{copy}}
 
-You will also want the website endpoints for these two buckets. Add the
+You will also want to know the website endpoints for these two buckets. Add the
 following to `outputs.tf`{{open}}:
 
 ```
@@ -154,13 +146,21 @@ output "prod_website_endpoint" {
 These three files make up the configuration for the environment you will work
 with for this session.
 
-Apply this configuration now:
+Initialize your Terraform workspace:
+
+```
+terraform init
+```{{execute}}
+
+Terraform with install two providers.
+
+Now apply this configuration:
 
 ```
 terraform apply
 ```{{execute}}
 
-Respond "yes" when prompted.
+Respond with "yes" when prompted.
 
 You can verify the website endpoint URLs by opening them in your web browser.
 

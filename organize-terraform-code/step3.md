@@ -1,5 +1,3 @@
-# Separate Workspaces
-
 In the last step, you separated your configuration into two different files.
 While this can help you organize configuration within a single project, it
 doesn't help prevent accidental changes to parts of your infrastructure.
@@ -15,13 +13,18 @@ rm prod.tf
 mv dev.tf main.tf
 ```{{execute}}
 
-The original configuration included references to the environment - dev or prod
-- in several places. To make the configuration more generic, you will need to
+The original configuration included references to the environment (dev or prod)
+in several places. To make the configuration more generic, you will need to
 remove and replace these references.
 
 Replace the contents of `variables.tf`{{open}} with:
 
 ```
+variable "aws_region" {
+  description = "AWS region for all resources"
+  default     = "us-west-2"
+}
+
 variable "prefix" {
   description = "Prefix for buckets in this environment."
   default     = "dev"
@@ -66,7 +69,7 @@ And finally update the object resource:
   acl          = "public-read"
   key          = "index.html"
 - bucket       = aws_s3_bucket.dev.id
-+ bucket       = aws_s3_bucket.bucket.id
++ bucket       = aws_s3_bucket.web.id
   content      = file("${path.module}/assets/index.html")
   content_type = "text/html"
 }
@@ -76,16 +79,16 @@ Create a new file called `dev.tfvars`{{open}} to store variable definitions for 
 development environment:
 
 ```
-region = "us-west-2"
+aws_region = "us-west-2"
 prefix = "dev"
-```
+```{{copy}}
 
 Create another file called `prod.tfvars`{{open}}:
 
 ```
-region = "us-west-2"
+aws_region = "us-west-2"
 prefix = "prod"
-```
+```{{copy}}
 
 Now that your configuration is refactored to support either a dev or prod
 environment, initialize your workspace again to ensure your Terraform
@@ -106,7 +109,7 @@ Apply your configuration to the dev workspace:
 
 ```
 terraform apply -var-file=dev.tfvars
-```{{exceute}}
+```{{execute}}
 
 Enter "yes" at the prompt, and open the website endpoint in your web browser to
 verify that your infrastructure was deployed successfully.
@@ -143,5 +146,7 @@ terraform workspace select dev
 terraform destroy -var-file=dev.tfvars
 ```{{execute}}
 
-In the next step, you will manage your configuration in seperate directories.
+And once again respond to the prompt with "yes".
+
+In the next step, you will learn to manage your configuration in seperate directories.
 

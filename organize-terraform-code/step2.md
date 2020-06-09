@@ -1,5 +1,3 @@
-# Separate Configuration
-
 In this step, you will separate your production and development environments
 into two configuration files.
 
@@ -30,6 +28,13 @@ blocks, so comment out or remove these lines from `prod.tf`{{open}}:
 #   separator = "-"
 # }
 ```
+
+Also remove the entire `resource "aws_s3_bucket" "dev" { ... }` and `resource
+"aws_s3_bucket_object" "dev" { ... }` blocks from `prod.tf`{{open}}.
+
+Open `dev.tf`{{open}}, and remove the `resource "aws_s3_bucket" "prod" { ... }`
+and `resource "aws_s3_bucket_object" "dev" { ... }` blocks as well. Be sure to leave the
+provider and random_pet blocks in this file.
 
 Your configuration hasn't changed, however, so applying it will show no
 changes.
@@ -67,6 +72,8 @@ Before moving on, destroy the resources you've created so far.
 ```
 terraform destroy
 ```{{execute}}
+
+Respond with `yes` when prompted.
 
 In the next step, you will separate your dev and production environments into
 different workspaces, so each can be deployed and managed separately.

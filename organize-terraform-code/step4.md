@@ -1,5 +1,3 @@
-# Separate Directories
-
 In this step, you will separate your prod and dev environments into two
 directories, each with their own configuration and state.
 
@@ -74,5 +72,4 @@ Now your configuration is independant, and each environment is managed
 separately. However, the configuration is entirely duplicated between
 environments.
 
-In the next step, you will refactor duplicate parts of your infrastructure into
-a module.
+In the next step, you will refactor the bucket resource into a module.
