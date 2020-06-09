@@ -111,7 +111,7 @@ Apply your configuration to the dev workspace:
 terraform apply -var-file=dev.tfvars
 ```{{execute}}
 
-Enter "yes" at the prompt, and open the website endpoint in your web browser to
+Enter `yes`{{execute}} at the prompt, and open the website endpoint in your web browser to
 verify that your infrastructure was deployed successfully.
 
 Now create and switch to a production workspace:
@@ -124,7 +124,7 @@ terraform workspace new prod
 terraform apply -var-file=prod.tfvars
 ```{{execute}}
 
-Again, respond to the prompt with "yes", and check the new production website
+Again, respond to the prompt with `yes`{{execute}}, and check the new production website
 endpoint.
 
 Now your environments can be managed independantly. This works well when the
@@ -139,14 +139,14 @@ Before moving on, destroy the resources you've created so far.
 terraform destroy -var-file=prod.tfvars
 ```{{execute}}
 
-Be sure to answer "yes" at the prompt.
+Be sure to answer `yes`{{execute}} at the prompt.
 
 ```
 terraform workspace select dev
 terraform destroy -var-file=dev.tfvars
 ```{{execute}}
 
-And once again respond to the prompt with "yes".
+And once again respond to the prompt with `yes`{{execute}}.
 
 In the next step, you will learn to manage your configuration in seperate directories.
 

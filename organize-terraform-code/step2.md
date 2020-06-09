@@ -65,7 +65,7 @@ updated.
 terraform apply
 ```{{execute}}
 
-Respond with `yes` to apply the changes.
+Respond with `yes`{{execute}} to apply the changes.
 
 Before moving on, destroy the resources you've created so far.
 
@@ -73,7 +73,7 @@ Before moving on, destroy the resources you've created so far.
 terraform destroy
 ```{{execute}}
 
-Respond with `yes` when prompted.
+Respond with `yes`{{execute}} when prompted.
 
 In the next step, you will separate your dev and production environments into
 different workspaces, so each can be deployed and managed separately.

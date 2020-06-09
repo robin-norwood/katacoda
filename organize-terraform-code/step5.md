@@ -149,8 +149,8 @@ Now you can provision the bucket:
 terraform apply -var-file=dev.tfvars
 ```{{execute}}
 
-Respond "yes" to the prompt, and once again visit the website endpoint in your
-web browser to verify the website was deployed correctly.
+Respond `yes`{{execute}} to the prompt, and once again visit the website
+endpoint in your web browser to verify the website was deployed correctly.
 
 The steps to update and apply your production configuration are nearly identical
 to the ones for your dev environment. Be sure to apply your configuration with

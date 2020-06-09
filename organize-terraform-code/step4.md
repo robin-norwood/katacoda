@@ -39,7 +39,7 @@ terraform init
 terraform apply -var-file=dev.tfvars
 ```{{execute}}
 
-Be sure to respond to the prompt with "yes".
+Be sure to respond to the prompt with `yes`{{execute}}.
 
 You can verify the website endpoint URL by opening it in your web browser.
 
@@ -51,7 +51,7 @@ terraform init
 terraform apply -var-file=prod.tfvars
 ```{{execute}}
 
-Again, respond to the confirmation prompt with "yes"
+Again, respond to the confirmation prompt with `yes`{{execute}}.
 
 After verifying that the infrastructure works as expected, you can destroy it.
 
@@ -59,14 +59,14 @@ After verifying that the infrastructure works as expected, you can destroy it.
 terraform destroy -var-file=prod.tfvars
 ```{{execute}}
 
-Respond to the prompt with "yes".
+Respond to the prompt with `yes`{{execute}}.
 
 ```
 cd ../dev
 terraform destroy -var-file=dev.tfvars
 ```{{execute}}
 
-Once more, respond to the prompt with "yes".
+Once more, respond to the prompt with `yes`{{execute}}.
 
 Now your configuration is independant, and each environment is managed
 separately. However, the configuration is entirely duplicated between
