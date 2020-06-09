@@ -3,16 +3,11 @@
 In this step, you will separate your prod and dev environments into two
 directories, each with their own configuration and state.
 
-Verify that you are still working in the `learn-terraform` directory before moving on.
+Ensure that you are still working in the `learn-terraform` directory before moving on.
 
 ```
-pwd
+cd ~/learn-terraform
 ```{{execute}}
-
-```
-$ pwd
-/root/learn-terraform
-```
 
 Create directories for your environments:
 

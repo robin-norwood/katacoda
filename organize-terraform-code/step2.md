@@ -16,19 +16,19 @@ mv main.tf prod.tf
 ```{{execute}}
 
 Your configuration only needs one instance of the provider and random_pet
-blocks, so comment or delete these lines from `prod.tf`:
+blocks, so comment out or delete these lines from `prod.tf`:
 
 ```
-#provider "aws" {
-#  access_key = "AKI#############IEU"
-#  secret_key = "Kg7##################################yGv"
-#  region     = "us-west-2"
-#}
+# provider "aws" {
+#   access_key = "AKI#############IEU"
+#   secret_key = "Kg7##################################yGv"
+#   region     = "us-west-2"
+# }
 
-#resource "random_pet" "petname" {
-#  length    = 4
-#  separator = "-"
-#}
+# resource "random_pet" "petname" {
+#   length    = 4
+#   separator = "-"
+# }
 ```
 
 Your configuration hasn't changed, however, so applying it will show no
@@ -67,5 +67,6 @@ Before moving on, destroy the resources you've created so far.
 terraform destroy
 ```{{execute}}
 
-In the next step, you will separate your dev and production environments so each
-can be managed independantly.
+In the next step, you will separate your dev and production environments into
+different workspaces, so each can be deployed and managed separately.
+
