@@ -7,7 +7,8 @@ apt-get --assume-yes install unzip
 curl -O "https://releases.hashicorp.com/terraform/${TF_VER}/terraform_${TF_VER}_linux_amd64.zip"
 unzip "terraform_${TF_VER}_linux_amd64.zip" -d /usr/local/bin/
 
-mkdir learn-terraform
+mkdir -p learn-terraform/assets
+cp index.html learn-terraform/assets/
 cd learn-terraform
 touch {main.tf,variables.tf,outputs.tf}
 
