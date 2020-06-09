@@ -46,7 +46,8 @@ output "website_endpoint" {
 
 Now, update `main.tf`{{open}} to reflect these changes.
 
-First, update the bucket resource name and bucket name argument:
+First, update the bucket resource name from `dev` to `web`, and bucket name
+argument to use the new `var.prefix` variable:
 
 ```
 - resource "aws_s3_bucket" "dev" {
@@ -55,7 +56,8 @@ First, update the bucket resource name and bucket name argument:
 + bucket = "${var.prefix}-${random_pet.petname.id}"
 ```
 
-Also update the bucket resource name in the policy document:
+Also update the bucket resource name in the policy document to use the new
+`var.prefix` variable:
 
 ```
         "Resource": [
@@ -64,7 +66,8 @@ Also update the bucket resource name in the policy document:
         ]
 ```
 
-And finally update the object resource:
+And finally update the object resource name to `webapp`, and use the new name
+for the bucket resource:
 
 ```
 - resource "aws_s3_bucket_object" "dev" {
@@ -78,6 +81,8 @@ And finally update the object resource:
   content_type = "text/html"
 }
 ```
+
+Each environment will use a different set of variable definitions.
 
 Create a new file called `dev.tfvars`{{open}} to store variable definitions for your
 development environment:
