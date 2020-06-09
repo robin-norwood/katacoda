@@ -160,7 +160,7 @@ Now apply this configuration:
 terraform apply
 ```{{execute}}
 
-Respond with "yes" when prompted.
+Respond with `yes`{{execute}} when prompted.
 
 You can verify the website endpoint URLs by opening them in your web browser.
 
