@@ -1,8 +1,8 @@
 Now that you have a monolithic configuration to work with, in this step you will
-seperate the configuration into two files, one for your "dev" environment, and
+separate the configuration into two files, one for your "dev" environment, and
 one for "prod".
 
-## Seperate Configuration Files
+## Separate Configuration Files
 
 In this step, you will separate your production and development environments
 into two configuration files.
@@ -75,7 +75,7 @@ dev_website_endpoint = http://hc-digital-dev-infinitely-vertically-busy-tapir.s3
 prod_website_endpoint = http://hc-digital-prod-infinitely-vertically-busy-tapir.s3-website-us-west-2.amazonaws.com/index.html
 ```
 
-Now your production and development environemnts are in separate files, but they
+Now your production and development environments are in separate files, but they
 are managed by the same Terraform workspace, and share both configuration and
 state. Because of this, a change that you intend to make in one environment can
 affect the other.
