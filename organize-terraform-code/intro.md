@@ -1,8 +1,5 @@
 # Organize Terraform Configuration
 
-In this hands-on lab, you'll organize Terraform configuration with workspaces
-and modules.
-
 In this workshop, you'll organize Terraform configuration using an example
 configuration that manages static websites hosted in AWS S3.
 
