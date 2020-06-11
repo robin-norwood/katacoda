@@ -12,8 +12,8 @@ cd ~/learn-terraform
 Now create a directory with empty files to define your module.
 
 ```
-mkdir -p modules/aws-s3-static-website-bucket
-cd modules/aws-s3-static-website-bucket
+mkdir -p modules/terraform-aws-s3-static-website-bucket
+cd modules/terraform-aws-s3-static-website-bucket
 touch {README.md,main.tf,variables.tf,outputs.tf}
 cd -
 ```{{execute}}
@@ -22,7 +22,7 @@ The file `README.md` isn't used by Terraform, but can be used to document your
 module if you host it in a public or private Terraform Registry, or in a version
 control system such as GitHub.
 
-Add the following to `modules/aws-s3-static-website-bucket/README.md`{{open}}:
+Add the following to `modules/terraform-aws-s3-static-website-bucket/README.md`{{open}}:
 
 ```
 # AWS S3 static website bucket
@@ -32,7 +32,7 @@ This module provisions AWS S3 buckets configured for static website hosting.
 
 ## Create Module Configuration
 
-Add the following configuration to `modules/aws-s3-static-website-bucket/main.tf`{{open}}:
+Add the following configuration to `modules/terraform-aws-s3-static-website-bucket/main.tf`{{open}}:
 
 ```
 resource "aws_s3_bucket" "s3_bucket" {
@@ -72,7 +72,7 @@ the provider configuration from the Terraform configuration that uses them.
 
 Like any Terraform configuration, modules can have variables and outputs.
 
-Add the following to `modules/aws-s3-static-website-bucket/variables.tf`{{open}}:
+Add the following to `modules/terraform-aws-s3-static-website-bucket/variables.tf`{{open}}:
 
 ```
 variable "bucket_name" {
@@ -81,7 +81,7 @@ variable "bucket_name" {
 }
 ```{{copy}}
 
-And add the following to `modules/aws-s3-static-website-bucket/outputs.tf`{{open}}:
+And add the following to `modules/terraform-aws-s3-static-website-bucket/outputs.tf`{{open}}:
 
 ```
 output "arn" {
@@ -124,7 +124,7 @@ Replace it with the following.
 
 ```
 module "website_s3_bucket" {
-  source = "../modules/aws-s3-static-website-bucket"
+  source = "../modules/terraform-aws-s3-static-website-bucket"
 
   bucket_name = "${var.prefix}-${random_pet.petname.id}"
 }
