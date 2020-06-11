@@ -100,12 +100,27 @@ output "website_endpoint" {
 }
 ```{{copy}}
 
-## Refactor Configuration
+## Refactor Dev Configuration
 
-Now refactor your `prod` and `dev` configuration to use this module.
+Now refactor your `dev` configuration to use this module.
 
-Update `dev/main.tf`{{open}} to remove the entire `resource "aws_s3_bucket"
-"web" { ... }` block, and replace it with the following:
+Open `dev/main.tf`{{open}} and remove the entire bucket resource block.
+
+```
+resource "aws_s3_bucket" "web" {
+  bucket = "${var.prefix}-${random_pet.petname.id}"
+  acl    = "public-read"
+
+# ...
+
+  website {
+    index_document = "index.html"
+    error_document = "error.html"
+  }
+}
+```
+
+Replace it with the following.
 
 ```
 module "website_s3_bucket" {
@@ -160,9 +175,9 @@ terraform apply
 Respond `yes`{{execute}} to the prompt, and once again visit the website
 endpoint in your web browser to verify the website was deployed correctly.
 
-## Practice
+## Practice: Refactor Prod Configuration
 
-Now do the same with your prod environment.
+Now refactor your `prod` configuration to use this module.
 
 The steps to update and apply your production configuration are nearly identical
 to the ones for your dev environment.
