@@ -184,4 +184,4 @@ to the ones for your dev environment.
 
 ## Destroy Resources
 
-Clean up both environments by running `terraform destroy` in both directories.
+Clean up both environments by running `terraform destroy`{{execute}} in both directories.
