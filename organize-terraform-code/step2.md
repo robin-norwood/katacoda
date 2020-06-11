@@ -44,10 +44,10 @@ Also remove the resource blocks for your dev environment from `prod.tf`{{open}}:
       acl    = "public-read"
 
     # ...
+
       website {
         index_document = "index.html"
         error_document = "error.html"
-
       }
     }
     ```
