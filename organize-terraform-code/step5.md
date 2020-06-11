@@ -154,7 +154,7 @@ same filesystem as your Terraform configuration.
 Now you can provision the bucket:
 
 ```
-terraform apply -var-file=dev.tfvars
+terraform apply
 ```{{execute}}
 
 Respond `yes`{{execute}} to the prompt, and once again visit the website
@@ -165,10 +165,8 @@ endpoint in your web browser to verify the website was deployed correctly.
 Now do the same with your prod environment.
 
 The steps to update and apply your production configuration are nearly identical
-to the ones for your dev environment. Be sure to apply your configuration with
-the `-var-file=prod.tfvars` flag.
+to the ones for your dev environment.
 
 ## Destroy Resources
 
 Clean up both environments by running `terraform destroy` in both directories.
-Don't forget to include the `-var-file` argument!
