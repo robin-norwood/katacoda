@@ -53,6 +53,10 @@
         {
           "file": "outputs.tf",
           "target": "~/learn-terraform/"
+        },
+        {
+          "file": "policy.json",
+          "target": "~/learn-terraform/"
         }
       ]
     }
