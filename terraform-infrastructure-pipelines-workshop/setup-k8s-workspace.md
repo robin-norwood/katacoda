@@ -30,9 +30,8 @@ the Kubernetes ("john-d-k8s") workspace.
 1. In your forked repository, navigate to `main.tf`.
 1. Use the "pencil"/edit button to edit the file.
 1. Replace the `organization` and `workspaces` values with the organization set
-   up for this workshop, and your unique workspace name.
-  - `organization = "infrastructure-pipelines-workshop"`
-  - `workspaces   = "{firstName}-{lastInitial}-k8s"`<br/>
+   up for this workshop ("infrastructure-pipelines-workshop"), and your unique
+   workspace name ("{firstName}-{lastInitial}-k8s").
 ```
 terraform {
   backend "remote" {
