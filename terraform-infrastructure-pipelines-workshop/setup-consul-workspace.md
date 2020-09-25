@@ -10,7 +10,7 @@ of sets as you did for your Kubernetes workspace.
 1. Use the "pencil"/edit button to edit the file.
 1. Replace the `organization` and `workspaces` values with the organization set
    up for this workshop ("infrastructure-pipelines-workshop"), and your unique
-   workspace name ("{firstName}-{lastInitial}-consul").
+   workspace name ("{firstName}-{lastInitial}-consul"). <br/>
 ```
 terraform {
   backend "remote" {
