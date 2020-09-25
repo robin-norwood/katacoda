@@ -1,49 +1,83 @@
-## Configure Vault workspace
+## Configure the Vault workspace
 
-Fork the [Learn Terraform Pipelines Vault repository](https://github.com/hashicorp/learn-terraform-pipelines-vault). Replace the `organization` and `workspaces` values in [`main.tf`](https://github.com/hashicorp/learn-terraform-pipelines-vault/blob/master/main.tf). 
-- `organization = "infrastructure-pipelines-workshop"`
-- `workspaces   = "{firstName}-{lastInitial}-vault"`
+Once again, the steps to configure your Vault workspace will be similar to the
+previous two workspaces.
 
-```hcl
-terraform {
-  backend "remote" {
-    organization = "infrastructure-pipelines-workshop"
+1. Fork the [Learn Terraform Pipelines Vault
+   repository](https://github.com/hashicorp/learn-terraform-pipelines-vault)
+   into your own GitHub account using the `fork` interface in GitHub.
+1. In your forked repository, navigate to `main.tf`.
+1. Use the "pencil"/edit button to edit the file.
+1. Replace the `organization` and `workspaces` values in `main.tf`.   
+  - `organization = "infrastructure-pipelines-workshop"`
+  - `workspaces   = "{firstName}-{lastInitial}-vault"`
+  ```hcl
+  terraform {
+    backend "remote" {
+      organization = "infrastructure-pipelines-workshop"
 
-    workspaces {
-      name = "john-d-vault"
+      workspaces {
+        name = "john-d-vault"
+      }
     }
   }
-}
-```
+  ```
+1. Commit your changes directly to the "master" branch of your forked
+  repository.
+
+Now that your GitHub repository is configured for use with the Terraform Cloud
+workspace, connect them in the Terraform Cloud UI.
 
 ### Connect workspace to forked repository
 
-Click on your Vault workspace (`john-d-vault`). Click on "Settings" then "Version Control" to access workspace's version control.
+Visit the [Terraform Cloud
+UI](https://app.terraform.io/app/infrastructure-pipelines-workshop).
 
-Click on "Connect to version control". Select "Github" then your **forked** Vault repo: `learn-terraform-pipelines-vault`. Finally, click "Update VCS settings". This will connect this workspace to your forked Vault repo.
-
-Select "Include submodules on clone" then click on "Update VCS settings". This will clone any submodules in your Consul repo. 
+1. Select your Vault workspace ("john-d-vault").
+1. Within the workspace UI, click on "Settings" and then "Version Control".
+  ![Click on "Settings" then "Version Control" to access workspace version control](./assets/configure-vcs.png)
+1. Click on "Connect to version control" and choose "Version control
+   workflow".
+1. Select "Github".
+1. Select your **forked** Vault repo:
+  `{your-github-username}/learn-terraform-pipelines-vault`.
+1. Click "Update VCS settings" to connect this workspace to your forked GitHub
+   repository.
+1. Just as you did for the Consult workspace, select "Include submodules on
+   clone", and then click on "Update VCS settings". 
 
 ### Verify variables
 
-Next, click on "Variables". Your Terraform Variables should already be set for you. These correspond with the variables in [`variables.tf`](https://github.com/hashicorp/learn-terraform-pipelines-consul/blob/master/variables.tf). Verify your variables have been set correctly.
+Next, click on "Variables" in the Terraform Cloud workspace UI.
+
+Your Terraform Variables will already be set for you. These correspond with the
+variables in
+[`variables.tf`](https://github.com/hashicorp/learn-terraform-pipelines-vault/blob/master/variables.tf).
+
+Verify that these variables are set correctly before moving on.
 
 #### Terraform Variables
+
 - **organization** — Organization of workspace that created the Kubernetes cluster
-  This should be set to `infrastructure-pipelines-workshop`.
+  This will be set to `infrastructure-pipelines-workshop`.
 - **consul_workspace** —Terraform Cloud Workspace for the Consul cluster. 
-  This should be set to `{firstName}-{lastInitial}-consul` (`john-d-consul`).
+  This will be set to something similar to `{firstName}-{lastInitial}-consul` (`john-d-consul`).
 - **cluster_workspace** — Terraform Cloud Workspace for the Kubernetes cluster.
-  This should be set to `{firstName}-{lastInitial}-k8s` (`john-d-k8s`).
+  This will be set to something similar to `{firstName}-{lastInitial}-k8s` (`john-d-k8s`).
 
-### Enable run triggers 
+### Enable run trigger
 
-Click on "Settings" then select "Run Triggers".
+In the Workspace UI, click on "Settings" and then select "Run Triggers".
 
-Under "Source Workspaces", select your Consul workspace(`john-d-consul`) then click "Add Workspace".
+Under "Source Workspaces", select your Consul workspace ("john-d-consul") then
+click "Add Workspace".
 
 ## Next Steps
 
-You have successfully configured your Vault workspace. The pipeline will retrieve the Kubernetes credentials from the Kubernetes workspace to authenticate to the Helm provider; the pipeline will retrieve the Helm release name and Kubernetes namespace from the Consul workspace.
+You have successfully configured your Vault workspace. The pipeline will
+retrieve the Kubernetes credentials from the Kubernetes workspace to
+authenticate to the Helm provider. The pipeline will also retrieve the Helm
+release name and Kubernetes namespace from the Consul workspace.
 
-In the next step, you will deploy a Consul instance and Vault instance onto your Kubernetes cluster.
+In the next step, you will deploy a Consul instance and Vault instance onto your
+Kubernetes cluster.
