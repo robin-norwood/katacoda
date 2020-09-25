@@ -11,19 +11,22 @@ of sets as you did for your Kubernetes workspace.
 1. Replace the `organization` and `workspaces` values with the organization set
    up for this workshop ("infrastructure-pipelines-workshop"), and your unique
    workspace name ("{firstName}-{lastInitial}-consul"). <br/>
-  ```
-    terraform {
-      backend "remote" {
-        organization = "infrastructure-pipelines-workshop"
-
-        workspaces {
-          name = "john-d-consul"
-        }
-      }
-    }
-  ```
 1. Commit your changes directly to the "master" branch of your forked
    repository.
+
+The `main.tf` file should look similar to the following.
+
+```
+terraform {
+  backend "remote" {
+    organization = "infrastructure-pipelines-workshop"
+
+    workspaces {
+      name = "john-d-consul"
+    }
+  }
+}
+```
 
 Now that your GitHub repository is configured for use with the Terraform Cloud
 workspace, connect them in the Terraform Cloud UI.

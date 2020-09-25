@@ -11,6 +11,11 @@ previous two workspaces.
 1. Replace the `organization` and `workspaces` values with the organization set
    up for this workshop ("infrastructure-pipelines-workshop"), and your unique
    workspace name ("{firstName}-{lastInitial}-vault").
+1. Commit your changes directly to the "master" branch of your forked
+  repository.
+
+The `main.tf` file should look similar to the following.
+
 ```
 terraform {
   backend "remote" {
@@ -22,8 +27,6 @@ terraform {
   }
 }
 ```
-1. Commit your changes directly to the "master" branch of your forked
-  repository.
 
 Now that your GitHub repository is configured for use with the Terraform Cloud
 workspace, connect them in the Terraform Cloud UI.
