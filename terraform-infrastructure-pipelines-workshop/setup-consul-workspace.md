@@ -12,15 +12,15 @@ of sets as you did for your Kubernetes workspace.
    up for this workshop ("infrastructure-pipelines-workshop"), and your unique
    workspace name ("{firstName}-{lastInitial}-consul"). <br/>
 ```
-terraform {
-  backend "remote" {
-    organization = "infrastructure-pipelines-workshop"
+    terraform {
+      backend "remote" {
+        organization = "infrastructure-pipelines-workshop"
 
-    workspaces {
-      name = "john-d-consul"
+        workspaces {
+          name = "john-d-consul"
+        }
+      }
     }
-  }
-}
 ```
 1. Commit your changes directly to the "master" branch of your forked
    repository.
