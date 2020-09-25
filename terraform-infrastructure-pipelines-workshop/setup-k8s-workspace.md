@@ -1,7 +1,7 @@
 ## Setup Terraform Cloud workspaces
 
 In the next few steps, you will locate your pre-configured workspaces
-(Kubernetes, Consul, and Vault) in Terraform Cloud. Then, you will connect them
+(Kubernetes, Consul, and Vault) in Terraform Cloud. Then you will connect them
 to a version control system (VCS), verify the variables are set up properly, and
 set up run triggers connecting the workspaces.
 
@@ -16,11 +16,11 @@ name and middle initial. For example, if your name is John Doe, you should see:
 - `john-d-consul`
 - `john-d-vault`
 
-You will use these three workspaces for the duration of this workshop.
+You will use these three workspaces for the rest of this workshop.
 
 ## Configure the Kubernetes workspace
 
-You will need to configure your own forks of the repositories used in this
+You will need to create your own forks of the repositories used in this
 workshop, and configure them to use your Terraform Cloud workspaces. Start with
 the Kubernetes ("john-d-k8s") workspace.
 
@@ -31,19 +31,18 @@ the Kubernetes ("john-d-k8s") workspace.
 1. Use the "pencil"/edit button to edit the file.
 1. Replace the `organization` and `workspaces` values with the organization set
    up for this workshop, and your unique workspace name.
-  - `organization = "infrastructure-pipelines-workshop"`
-  - `workspaces   = "{firstName}-{lastInitial}-k8s"`
-  ```hcl
-  terraform {
-    backend "remote" {
-      organization = "infrastructure-pipelines-workshop"
-
-      workspaces {
-        name = "john-d-k8s"
-      }
+  `organization = "infrastructure-pipelines-workshop"`
+  `workspaces   = "{firstName}-{lastInitial}-k8s"`
+```hcl
+terraform {
+  backend "remote" {
+    organization = "infrastructure-pipelines-workshop"
+     workspaces {
+      name = "john-d-k8s"
     }
   }
-  ```
+}
+```
 1. Commit your changes directly to the "master" branch of your forked
   repository.
 
