@@ -8,20 +8,20 @@ of sets as you did for your Kubernetes workspace.
    into your own GitHub account using the `fork` interface in GitHub.
 1. In your forked repository, navigate to `main.tf`.
 1. Use the "pencil"/edit button to edit the file.
-1. Replace the `organization` and `workspaces` values in `main.tf`.   
-  - `organization = "infrastructure-pipelines-workshop"`
-  - `workspaces   = "{firstName}-{lastInitial}-consul"`
-  ```hcl
-  terraform {
-    backend "remote" {
-      organization = "infrastructure-pipelines-workshop"
+1. Replace the `organization` and `workspaces` values with the organization set
+   up for this workshop ("infrastructure-pipelines-workshop"), and your unique
+   workspace name ("{firstName}-{lastInitial}-consul").
+```
+terraform {
+  backend "remote" {
+    organization = "infrastructure-pipelines-workshop"
 
-      workspaces {
-        name = "john-d-consul"
-      }
+    workspaces {
+      name = "john-d-consul"
     }
   }
-  ```
+}
+```
 1. Commit your changes directly to the "master" branch of your forked
    repository.
 
@@ -39,7 +39,7 @@ UI](https://app.terraform.io/app/infrastructure-pipelines-workshop).
 1. Click on "Connect to version control" and choose "Version control workflow".
 1. Select "Github".
 1. Select your **forked** Consul repository:
-  `{your-github-username}/learn-terraform-pipelines-consul`.
+  `{your-github-username}/learn-terraform-pipelines-consul`
 1. Click "Update VCS settings" to connect this workspace to your forked GitHub
    repository.
 

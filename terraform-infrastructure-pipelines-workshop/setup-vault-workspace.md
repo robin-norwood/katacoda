@@ -8,20 +8,20 @@ previous two workspaces.
    into your own GitHub account using the `fork` interface in GitHub.
 1. In your forked repository, navigate to `main.tf`.
 1. Use the "pencil"/edit button to edit the file.
-1. Replace the `organization` and `workspaces` values in `main.tf`.   
-  - `organization = "infrastructure-pipelines-workshop"`
-  - `workspaces   = "{firstName}-{lastInitial}-vault"`
-  ```hcl
-  terraform {
-    backend "remote" {
-      organization = "infrastructure-pipelines-workshop"
+1. Replace the `organization` and `workspaces` values with the organization set
+   up for this workshop ("infrastructure-pipelines-workshop"), and your unique
+   workspace name ("{firstName}-{lastInitial}-vault").
+```
+terraform {
+  backend "remote" {
+    organization = "infrastructure-pipelines-workshop"
 
-      workspaces {
-        name = "john-d-vault"
-      }
+    workspaces {
+      name = "john-d-vault"
     }
   }
-  ```
+}
+```
 1. Commit your changes directly to the "master" branch of your forked
   repository.
 
@@ -40,7 +40,7 @@ UI](https://app.terraform.io/app/infrastructure-pipelines-workshop).
    workflow".
 1. Select "Github".
 1. Select your **forked** Vault repo:
-  `{your-github-username}/learn-terraform-pipelines-vault`.
+  `{your-github-username}/learn-terraform-pipelines-vault`
 1. Click "Update VCS settings" to connect this workspace to your forked GitHub
    repository.
 1. Just as you did for the Consult workspace, select "Include submodules on

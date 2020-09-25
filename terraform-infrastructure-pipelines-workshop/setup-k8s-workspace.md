@@ -36,6 +36,7 @@ the Kubernetes ("john-d-k8s") workspace.
 terraform {
   backend "remote" {
     organization = "infrastructure-pipelines-workshop"
+
      workspaces {
       name = "john-d-k8s"
     }
@@ -62,7 +63,7 @@ UI](https://app.terraform.io/app/infrastructure-pipelines-workshop).
   - If this is your first time using Terraform Cloud with GitHub, it will ask
     you to authorize Terraform Cloud to access GitHub.
 1. Select your **forked** Kubernetes repo:
-  `{your-github-username}/learn-terraform-pipelines-k8s`.
+  `{your-github-username}/learn-terraform-pipelines-k8s`
 1. Click "Update VCS settings" to connect this workspace to your forked GitHub
    repository.
 
