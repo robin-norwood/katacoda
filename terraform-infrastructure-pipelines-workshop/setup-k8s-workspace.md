@@ -32,8 +32,8 @@ the Kubernetes ("john-d-k8s") workspace.
 1. Replace the `organization` and `workspaces` values with the organization set
    up for this workshop, and your unique workspace name.
   - `organization = "infrastructure-pipelines-workshop"`
-  - `workspaces   = "{firstName}-{lastInitial}-k8s"`
-```hcl
+  - `workspaces   = "{firstName}-{lastInitial}-k8s"`<br/>
+```
 terraform {
   backend "remote" {
     organization = "infrastructure-pipelines-workshop"
