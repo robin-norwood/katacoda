@@ -32,17 +32,17 @@ the Kubernetes ("john-d-k8s") workspace.
 1. Replace the `organization` and `workspaces` values with the organization set
    up for this workshop ("infrastructure-pipelines-workshop"), and your unique
    workspace name ("{firstName}-{lastInitial}-k8s").
-```
-terraform {
-  backend "remote" {
-    organization = "infrastructure-pipelines-workshop"
+  ```
+  terraform {
+    backend "remote" {
+      organization = "infrastructure-pipelines-workshop"
 
-     workspaces {
-      name = "john-d-k8s"
+      workspaces {
+        name = "john-d-k8s"
+      }
     }
   }
-}
-```
+  ```
 1. Commit your changes directly to the "master" branch of your forked
   repository.
 
