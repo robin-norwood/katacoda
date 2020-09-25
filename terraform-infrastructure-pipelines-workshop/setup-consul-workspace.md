@@ -11,7 +11,7 @@ of sets as you did for your Kubernetes workspace.
 1. Replace the `organization` and `workspaces` values with the organization set
    up for this workshop ("infrastructure-pipelines-workshop"), and your unique
    workspace name ("{firstName}-{lastInitial}-consul"). <br/>
-```
+  ```
     terraform {
       backend "remote" {
         organization = "infrastructure-pipelines-workshop"
@@ -21,7 +21,7 @@ of sets as you did for your Kubernetes workspace.
         }
       }
     }
-```
+  ```
 1. Commit your changes directly to the "master" branch of your forked
    repository.
 
