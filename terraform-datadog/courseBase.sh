@@ -5,14 +5,9 @@ minikube start
 source <(helm completion bash)
 source <(minikube completion bash)
 
-# fetch Terraform archive
-curl -O  https://releases.hashicorp.com/terraform/0.13.5/terraform_0.13.5_linux_amd64.zip
-
-# unzip Terraform archive and make it accessible in PATH
-unzip terraform_0.13.5_linux_amd64.zip -d /usr/local/bin/
-
-# clean up
-rm --recursive  --force terraform_0.13.5_linux_amd64.zip
+# Installs Terraform 0.14
+curl -O https://releases.hashicorp.com/terraform/0.14.7/terraform_0.14.7_linux_amd64.zip
+unzip terraform_0.14.7_linux_amd64.zip -d /usr/local/bin/
 
 # helm init
 helm init
