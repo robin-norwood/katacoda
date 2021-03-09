@@ -9,6 +9,8 @@ source <(minikube completion bash)
 curl -O https://releases.hashicorp.com/terraform/0.14.7/terraform_0.14.7_linux_amd64.zip
 unzip terraform_0.14.7_linux_amd64.zip -d /usr/local/bin/
 
+rm terraform_0.14.7_linux_amd64.zip
+
 # helm init
 helm init
 
