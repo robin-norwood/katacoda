@@ -36,6 +36,6 @@ cp /tmp/repo/datadog_synthetics.tf /root/
 
 cd /root/
 
-clear
+#clear
 
 echo "Ready!"
