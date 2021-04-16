@@ -112,33 +112,25 @@ Environment Variables will already be set for you.
 These variables correspond to the variables declared in
 [`variables.tf`](https://github.com/hashicorp/learn-terraform-pipelines-k8s/blob/master/variables.tf).
 
-- **username** — Username for Kubernetes cluster<br/>
+- **user_name** — Username for Kubernetes cluster<br/>
   This can be anything, but defaults to `hashicorp`.
 - **enable_consul_and_vault** — Enable Consul and Vault for the secrets cluster<br/>
   This will be set to `false`. This variable dictates whether Consul and Vault
   should be deployed on your Kubernetes cluster.
-- **cluster_name** — Name of Kubernetes cluster<br/>
-  This will be set to `tfc-pipelines`.
-- **region** — GCP region to deploy clusters<br/>
-  This will be set to `europe-west4`. For a full list of GCP regions, refer to [Google’s Region and Zones documentation](https://cloud.google.com/compute/docs/regions-zones).
-- **password** — Password for Kubernetes cluster<br/>
-  This can be anything over 16 characters, but for this workshop it defaults to
-  `infrastructurepipelines`, and will be marked **sensitive**.
-  Terraform will set this when it creates your Kubernetes cluster and will
-  distribute it as necessary when creating your Consul and Vault clusters. You
-  will not need to manually input this value.
-- **google_project** — Google Project to deploy cluster<br/>
-  This is the Google Cloud project for your infrastructure, and will be set to
-  something similar to `{firstName}-{lastInitial}-{randomString}`.
+- **aws_region** AWS region to deploy clusters<br/>
+  This will be set to `eu-west-2`.
 
 #### Environment Variables
 
-The Terraform Google Cloud provider will use these credentials to authenticate
-with the Google Cloud API.
+The Terraform AWS provider will use these credentials to authenticate with the
+AWS API.
 
-- **GOOGLE_CREDENTIALS** — Flattened JSON of your GCP credentials.<br/>
-  This will already been set for you and marked **sensitive**. These credentials
-  have access to both the **Compute Admin** and **GKE Admin** roles.
+- **AWS_ACCESS_KEY_ID** —AWS Access Key ID.
+- **AWS_SECRET_ACCESS_KEY** - AWS Secret Access Key.
+
+These credentialls have already been set for you and marked **sensitive**. They
+have been provisioned with the necessary access to manage the infrastructure for
+this workshop.
 
 ## Deploy the Kubernetes cluster
 
