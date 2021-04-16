@@ -2,17 +2,30 @@
 
 KUBECTL_RELEASE=v1.21.0
 TERRAFORM_RELEASE=0.15.0
+AWS_IAM_AUTHENTICATOR_RELEASE=1.19.6/2021-01-05
+
+cd ~
 
 # Install kubectl and add to PATH
-curl -LO https://dl.k8s.io/release/$(KUBECTL_RELEASE)/bin/linux/amd64/kubectl
+curl -LO https://dl.k8s.io/release/$KUBECTL_RELEASE/bin/linux/amd64/kubectl
 chmod +x kubectl
 mv kubectl /usr/local/bin
 
-# Install Terraform and init config
-cd ~
-curl -O https://releases.hashicorp.com/terraform/$(TERRAFORM_RELEASE)/terraform_$(TERRAFORM_RELEASE)_linux_amd64.zip
-unzip terraform_$(TERRAFORM_RELEASE)_linux_amd64.zip -d /usr/local/bin/
+# Install Terraform
+curl -O https://releases.hashicorp.com/terraform/$TERRAFORM_RELEASE/terraform_${TERRAFORM_RELEASE}_linux_amd64.zip
+unzip terraform_${TERRAFORM_RELEASE}_linux_amd64.zip -d /usr/local/bin/
 
+# Install AWS CLI
+curl -O https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip
+unzip awscli-exe-linux-x86_64.zip
+sudo ./aws/install
+
+# Install AWS IAM Authenticator
+curl -O https://amazon-eks.s3.us-west-2.amazonaws.com/$AWS_IAM_AUTHENTICATOR_RELEASE/bin/darwin/amd64/aws-iam-authenticator
+chmod +x aws-iam-authenticator
+mv aws-iam-authenticator /usr/local/bin
+
+# Create initial config file
 touch main.tf
 
-clear 
+clear
