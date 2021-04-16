@@ -21,7 +21,7 @@ unzip awscli-exe-linux-x86_64.zip
 sudo ./aws/install
 
 # Install AWS IAM Authenticator
-curl -O https://amazon-eks.s3.us-west-2.amazonaws.com/$AWS_IAM_AUTHENTICATOR_RELEASE/bin/darwin/amd64/aws-iam-authenticator
+curl -O https://amazon-eks.s3.us-west-2.amazonaws.com/$AWS_IAM_AUTHENTICATOR_RELEASE/bin/linux/amd64/aws-iam-authenticator
 chmod +x aws-iam-authenticator
 mv aws-iam-authenticator /usr/local/bin
 
