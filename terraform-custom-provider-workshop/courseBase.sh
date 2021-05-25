@@ -7,7 +7,7 @@ curl -O https://releases.hashicorp.com/terraform/$TERRAFORM_RELEASE/terraform_${
 unzip terraform_${TERRAFORM_RELEASE}_linux_amd64.zip -d /usr/local/bin/
 
 # Clone docker compose files
-git clone -b hashiconf-2020 https://github.com/hashicorp/terraform-provider-hashicups
+git clone -b hashiconf-2020-final https://github.com/hashicorp/terraform-provider-hashicups
 cd ~/terraform-provider-hashicups/docker_compose
 
 # Prevent `yes` command from accidentally being run
