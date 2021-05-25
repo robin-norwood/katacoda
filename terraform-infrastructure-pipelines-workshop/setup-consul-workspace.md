@@ -85,8 +85,8 @@ above, configure Terraform Cloud to load this submodule.
 
 ### Share remote state
 
-Share your Consul workspace's state with your Vault. This will allow it to
-access output values from your Consul workspace.
+Share your Consul workspace's state with your Vault workspace. This will allow
+it to access output values from your Consul workspace.
 
 1. Within the workspace UI, click on "Settings" and then "General".
 1. Scroll down to "Remote state sharing".

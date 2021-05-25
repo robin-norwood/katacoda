@@ -155,7 +155,7 @@ with the Google Cloud API.
 
 ## Deploy the Kubernetes cluster
 
-Use the `Queue Plan` interface in Terraform Cloud to queue a plan for your
+Use the `Queue plan manually` interface in Terraform Cloud to queue a plan for your
 workspace.
 
 ![Queue plan interface](./assets/queue-plan.png)
